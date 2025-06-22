@@ -1,0 +1,17 @@
+{
+  "name": "siddur-gen-testing",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@api/sefaria": "file:.api/apis/sefaria",
+    "@pdfme/common": "^5.4.0",
+    "@pdfme/generator": "^5.4.0",
+    "@pdfme/schemas": "^5.4.0"
+  }
+}
