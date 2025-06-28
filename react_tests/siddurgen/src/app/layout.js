@@ -22,11 +22,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen overflow-x-auto`}
       >
-        {children}
-        <footer className="flex items-center justify-center gap-4 p-4 bg-gray-100 dark:bg-gray-800">
-          <Image src={PoweredBySefaria} height={80} alt="Powered by Sefaria"/>
+        <div className="flex-grow">{children}</div>
+
+        <footer className="flex items-center justify-center p-4 bg-gray-100 dark:bg-gray-800">
+          <Image src={PoweredBySefaria} height={80} alt="Powered by Sefaria" />
         </footer>
       </body>
     </html>

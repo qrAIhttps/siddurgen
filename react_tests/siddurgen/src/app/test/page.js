@@ -1,9 +1,22 @@
-import SefariaTextLoader from "./sefariacomponent";
-export default async function Page() {
+import SiddurComponent from "@/lib/SiddurClasses/SiddurComponent";
+import SiddurPrayer from "@/lib/SiddurClasses/SiddurPrayer";
+import SiddurSource from "@/lib/SiddurClasses/SiddurSource";
 
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-        <SefariaTextLoader sefariaRef="Genesis 1:2" sefariaLanguage="hebrew"/>
+export default async function Page() {
+  const testSiddurTexts = [new SiddurSource(
+    "Modeh Ani", "I give thanks to You living and everlasting King for You have restored my soul with mercy. Great is Your faithfulness.", "english"),
+  new SiddurSource(
+    "מודה אני", "מודה אני לפניך מלך חי וקיים שהחזרת בי נשמתי בחמלה רבה אמונתך.", "hebrew")];
+
+  const textSiddurComponent = new SiddurPrayer(testSiddurTexts,"Modeh Ani", "A blessing recited in the morning.");
+
+      return (
+    <div>
+      {/* <SefariaTextLoader sefariaRef="Genesis 1:2"/> */}
+
+      <SiddurComponent 
+        SiddurComponent={textSiddurComponent}
+      />
     </div>
   );
 }
