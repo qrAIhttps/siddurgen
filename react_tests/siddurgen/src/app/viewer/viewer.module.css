@@ -1,0 +1,6 @@
+
+@media print {
+    .section-header {
+        page-break-before: always;
+    }
+}

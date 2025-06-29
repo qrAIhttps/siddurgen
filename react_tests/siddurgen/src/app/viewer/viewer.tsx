@@ -3,12 +3,13 @@ import SiddurComponent from "@/lib/SiddurClasses/SiddurComponent";
 import React, { useState } from "react";
 import { examplePrayer, exampleSiddur } from "@/lib/SiddurClasses/examples";
 import Siddur from "@/lib/SiddurClasses/Siddur";
+import styles from "./viewer.module.css";
 
 export default function Viewer() {
   const [opened, setOpened] = useState<boolean>(false);
   const [siddur, setSiddur] = useState<Siddur>(exampleSiddur);
   return (
-    <div className="flex flex-col items-center justify-center text-center min-w-lg bg-grey-100">
+    <div className={`flex flex-col items-center justify-center text-center min-w-lg bg-grey-100 ${styles.viewer}`}>
       {!opened && (
         <div>
           <h1 className="text-2xl font-bold mb-4">SiddurGen Viewer</h1>
