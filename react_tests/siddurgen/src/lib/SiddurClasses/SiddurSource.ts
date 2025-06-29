@@ -1,4 +1,5 @@
 export default class SiddurSource {
+    
     title: string;
     language: string;
     source: string;
@@ -13,4 +14,3 @@ export default class SiddurSource {
         this.text = text;
     }
 }
-

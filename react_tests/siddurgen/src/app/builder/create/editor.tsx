@@ -1,33 +1,30 @@
-import React from "react";
+"use client"
+import React, { useState, useEffect, use, Suspense } from "react";
 import SiddurPrayer from "@/lib/SiddurClasses/SiddurPrayer";
 import SiddurSource from "@/lib/SiddurClasses/SiddurSource";
 import SiddurComponent from "@/lib/SiddurClasses/SiddurComponent";
+import { getSiddurPrayerFromSefaria } from "@/lib/SefariaIntegration/SefariaTextSiddurComponent";
+import { examplePrayer } from "@/lib/SiddurClasses/examples";
 
-export default function Editor() {
-  const testSiddurTexts = [
-    new SiddurSource(
-      "Modeh Ani",
-      "I give thanks to You living and everlasting King for You have restored my soul with mercy. Great is Your faithfulness.",
-      "english"
-    ),
-    new SiddurSource(
-      "מודה אני",
-      "מודה אני לפניך מלך חי וקיים שהחזרת בי נשמתי בחמלה רבה אמונתך.",
-      "hebrew"
-    ),
-  ];
+export default function Editor(props) {
+  const [source, setSource] = useState<string>("Genesis 1:1");
+  const comp = use(props.SiddurComponent);
 
-  const testSiddurComponent = new SiddurPrayer(
-    testSiddurTexts,
-    "Modeh Ani",
-    "Modeh Ani",
-    "A blessing recited in the morning."
-  );
+  useEffect(() => {
+    const getSiddurPrayerWrapper = async() => {
+      const result = await getSiddurPrayerFromSefaria(source, "Modeh Ani", "מודה אני", "Modeh Ani");
+      setPrayer(result);
+    };
+
+    getSiddurPrayerWrapper();
+  }, [source]);
 
   return (
     <div>
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] bg-blue-50">
-       <SiddurComponent SiddurComponent={JSON.stringify(testSiddurComponent)} />
+       <SiddurComponent SiddurComponent={JSON.stringify(comp)} />
+
+       
       </div>
     </div>
   );

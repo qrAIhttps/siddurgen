@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Suspense } from "react";
 import SiddurComponent from "../../lib/SiddurClasses/SiddurComponent";
 import SiddurPrayer from "../../lib/SiddurClasses/SiddurPrayer";
 import SiddurSource from "../../lib/SiddurClasses/SiddurSource";
 import {getSiddurPrayerFromSefaria} from "../../lib/SefariaIntegration/SefariaTextSiddurComponent";
-import { get } from "http";
+
 
 export default async function Page() {
   const testSiddurTexts = [new SiddurSource(

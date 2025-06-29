@@ -19,9 +19,6 @@ export default function SiddurComponent(props: SiddurComponentProps) {
       </div>
       <br />
       <div>
-        {/* {Component.sources.map((source, index) => (
-            <div></div>))} */}
-
         <ul className="list-none flex flex-row gap-4">
             {Component.sources.map((source,index) => (
               <li key={index} className="flex-1 p-4 bg-white rounded-lg shadow hover:shadow-lg transition-shadow duration-100">
