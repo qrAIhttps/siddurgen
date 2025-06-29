@@ -1,32 +1,29 @@
-"use server";
+"use client";
 
 import React from "react";
 import SiddurPrayer from "./SiddurPrayer";
 
 interface SiddurComponentProps {
   /** The text to display inside the button */
-  SiddurComponent: SiddurPrayer;
-  /** Whether the button can be interacted with */
-  disabled: boolean;
+  SiddurComponent: string;
 }
-export default async function SiddurComponent(props: SiddurComponentProps) {
-
-
+export default function SiddurComponent(props: SiddurComponentProps) {
+  const Component: SiddurPrayer = JSON.parse(props.SiddurComponent);
   return (
-    <div className="flex flex-col items-center justify-center p-16 m-12 bg-gray-100 rounded-lg shadow-sm text-center min-w-auto">
+    <div className="flex flex-col items-center justify-center py-16 px-4 m-12 bg-gray-100 rounded-lg shadow-sm text-center min-w-auto">
       <div className="">
-        <h1 className="title text-2xl font-bold mb-4 justify-center">{props.SiddurComponent.title}</h1>
-        {props.SiddurComponent.subtitle &&<h2 className="subtitle text-lg text-gray-600">{props.SiddurComponent.subtitle}</h2>}
-        {props.SiddurComponent.description &&<h2 className="text-lg text-gray-600">{props.SiddurComponent.description}</h2>}
-        {props.SiddurComponent.leader &&<h2 className="subtitle text-lg text-gray-600">{props.SiddurComponent.leader}</h2>}
+        <h1 className="title text-2xl font-bold mb-4 justify-center">{Component.title}</h1>
+        {Component.subtitle &&<h2 className="subtitle text-lg text-gray-600">{Component.subtitle}</h2>}
+        {Component.description &&<h2 className="text-lg text-gray-600">{Component.description}</h2>}
+        {Component.leader &&<h2 className="subtitle text-lg text-gray-600">{Component.leader}</h2>}
       </div>
       <br />
       <div>
-        {/* {props.SiddurComponent.sources.map((source, index) => (
+        {/* {Component.sources.map((source, index) => (
             <div></div>))} */}
 
         <ul className="list-none flex flex-row gap-4">
-            {props.SiddurComponent.sources.map((source,index) => (
+            {Component.sources.map((source,index) => (
               <li key={index} className="flex-1 p-4 bg-white rounded-lg shadow hover:shadow-lg transition-shadow duration-100">
                 <div className="font-bold">{source.title}</div>
                 <div className="text-sm text-gray-700">{source.text}</div>
@@ -37,3 +34,5 @@ export default async function SiddurComponent(props: SiddurComponentProps) {
     </div>
   );
 }
+
+
