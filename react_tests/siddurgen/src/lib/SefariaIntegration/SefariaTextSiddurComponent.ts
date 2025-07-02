@@ -25,3 +25,10 @@ const hebrewText = await hebrewReq.json();
    return (siddurPrayer);
 
 }
+
+export interface SourceInfo {
+    slug: string;
+    title: string;
+    hebrewTitle: string;
+    englishTitle: string;
+  }

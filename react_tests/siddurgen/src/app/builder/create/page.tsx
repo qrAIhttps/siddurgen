@@ -13,7 +13,7 @@ interface SourceInfo {
 }
 export default function Page() {
 
-    const [query, setQuery] = useState<SourceInfo>({
+    const [sefariaSourceInfo, setSefariaSourceInfo] = useState<SourceInfo>({
     slug: "",
     title: "",
     hebrewTitle: "",
@@ -22,11 +22,11 @@ export default function Page() {
   const [textData, setTextData] = useState<SiddurPrayer>();
   const [loading, setLoading] = useState(false)
   const fetchText = async () => {
-    if (!query) return;
+    if (!sefariaSourceInfo) return;
     setLoading(true);
 
     try {
-      const response = await getSiddurPrayerFromSefaria(query.slug, query.title, query.hebrewTitle, query.englishTitle);
+      const response = await getSiddurPrayerFromSefaria(sefariaSourceInfo.slug, sefariaSourceInfo.title, sefariaSourceInfo.hebrewTitle, sefariaSourceInfo.englishTitle);
       setTextData(response);
     } catch (error) {
       console.error('Failed to fetch text:', error);
@@ -43,8 +43,8 @@ export default function Page() {
           <input
         type="text"
         placeholder="e.g. Genesis 1:1"
-        value={query.slug}
-        onChange={(e) => setQuery({ ...query, slug: e.target.value })}
+        value={sefariaSourceInfo.slug}
+        onChange={(e) => setSefariaSourceInfo({ ...sefariaSourceInfo, slug: e.target.value })}
         className="border px-2 py-1 mr-2"
           />
         </label>
@@ -53,8 +53,8 @@ export default function Page() {
           <input
         type="text"
         placeholder="e.g. Modeh Ani"
-        value={query.title}
-        onChange={(e) => setQuery({ ...query, title: e.target.value })}
+        value={sefariaSourceInfo.title}
+        onChange={(e) => setSefariaSourceInfo({ ...sefariaSourceInfo, title: e.target.value })}
         className="border px-2 py-1 mr-2"
           />
         </label>
@@ -63,8 +63,8 @@ export default function Page() {
           <input
         type="text"
         placeholder="e.g. מודה אני"
-        value={query.hebrewTitle}
-        onChange={(e) => setQuery({ ...query, hebrewTitle: e.target.value })}
+        value={sefariaSourceInfo.hebrewTitle}
+        onChange={(e) => setSefariaSourceInfo({ ...sefariaSourceInfo, hebrewTitle: e.target.value })}
         className="border px-2 py-1 mr-2"
           />
         </label>
@@ -73,8 +73,8 @@ export default function Page() {
           <input
         type="text"
         placeholder="e.g. Modeh Ani"
-        value={query.englishTitle}
-        onChange={(e) => setQuery({ ...query, englishTitle: e.target.value })}
+        value={sefariaSourceInfo.englishTitle}
+        onChange={(e) => setSefariaSourceInfo({ ...sefariaSourceInfo, englishTitle: e.target.value })}
         className="border px-2 py-1 mr-2"
           />
         </label>
